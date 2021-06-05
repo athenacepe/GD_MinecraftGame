@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Sprites/Pies/ButterChickenIdle2.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Pies/ButterChickenIdle0.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Pies/ButterChickenIdle1.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Pies/ButterChickenIdle3.png" type="Texture" id=4]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends KinematicBody2D
+
+onready var global_vars = get_node(\"/root/Global\")
+
+func _on_Pie1_body_entered(body):
+	if body.name == \"Player\" :
+		global_vars.pie -= 1
+		global_vars.score += 50
+		queue_free()
+	pass
+"
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "ButterChicken",
+"speed": 4.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 29.4086, 13.3674 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 31.6249, 14.2902 )
+
+[node name="Pie1" type="Area2D"]
+
+[node name="P1" type="KinematicBody2D" parent="."]
+script = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="P1"]
+frames = SubResource( 2 )
+animation = "ButterChicken"
+frame = 2
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="P1"]
+position = Vector2( 1.12245, 1.68369 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.541428, 1.45744 )
+shape = SubResource( 4 )
+[connection signal="body_entered" from="." to="P1" method="_on_Pie1_body_entered"]

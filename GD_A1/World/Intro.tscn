@@ -1,0 +1,128 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Pictures/BG Intro Top.jpg" type="Texture" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/Tilemaps/MinecraftBlocks.tres" type="TileSet" id=3]
+[ext_resource path="res://Pictures/PDP.png" type="Texture" id=4]
+[ext_resource path="res://Display Scenes/Storybox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Pictures/Sign.png" type="Texture" id=7]
+[ext_resource path="res://Sounds/Sweden.wav" type="AudioStream" id=8]
+[ext_resource path="res://Fonts/alagard_by_pix3m-d6awiwp.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Scripts/PersonScript.gd" type="Script" id=10]
+[ext_resource path="res://Fonts/MinecraftRegular-Bmg3.otf" type="DynamicFontData" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 9 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 64, 64 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 11 )
+
+[node name="Intro" type="Node2D"]
+
+[node name="BG Intro Top" type="Sprite" parent="."]
+position = Vector2( 1056, 416 )
+scale = Vector2( 1.5856, 1.22828 )
+texture = ExtResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 64 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2( 0, -64 )
+stream = ExtResource( 8 )
+autoplay = true
+
+[node name="Camera2D2" type="Camera2D" parent="Player"]
+current = true
+zoom = Vector2( 1.5, 1.5 )
+limit_left = -815
+limit_top = -515
+limit_right = 2816
+limit_bottom = 1056
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 7.0
+
+[node name="Ground" type="Node" parent="."]
+
+[node name="TileMap" type="TileMap" parent="Ground"]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 48, 48 )
+format = 1
+tile_data = PoolIntArray( 131065, 1, 0, 131066, 1, 0, 131067, 1, 0, 131071, 2, 0, 65536, 2, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 458743, 1, 0, 458744, 1, 0, 458745, 1, 0, 458746, 1, 0, 524279, 0, 0, 524280, 0, 0, 524281, 0, 0, 524282, 0, 0, 589815, 0, 0, 589816, 0, 0, 589817, 0, 0, 589818, 0, 0, 655351, 0, 0, 655352, 0, 0, 655353, 0, 0, 655354, 0, 0, 655355, 1, 0, 655356, 1, 0, 655357, 1, 0, 655358, 1, 0, 655359, 1, 0, 589824, 1, 0, 589825, 1, 0, 589826, 1, 0, 589827, 1, 0, 589828, 1, 0, 589829, 1, 0, 589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 589842, 1, 0, 589843, 1, 0, 589844, 1, 0, 589845, 1, 0, 589846, 1, 0, 589847, 1, 0, 589848, 1, 0, 589849, 1, 0, 589850, 1, 0, 589851, 1, 0, 720887, 0, 0, 720888, 0, 0, 720889, 0, 0, 720890, 0, 0, 720891, 0, 0, 720892, 0, 0, 720893, 0, 0, 720894, 0, 0, 720895, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 0, 0, 655381, 0, 0, 655382, 0, 0, 655383, 0, 0, 655384, 0, 0, 655385, 0, 0, 655386, 0, 0, 655387, 0, 0 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = -160.0
+margin_top = -224.0
+margin_right = 141.0
+margin_bottom = -74.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.137255, 0.482353, 0.207843, 1 )
+text = "Welcome 
+to 
+the Jungle"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Person" type="Area2D" parent="."]
+position = Vector2( -81.0649, -20.1816 )
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Person"]
+position = Vector2( 928, 832 )
+scale = Vector2( 0.25, 0.216736 )
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Person"]
+visible = false
+position = Vector2( 928, 800 )
+shape = SubResource( 2 )
+
+[node name="Label2" type="Label" parent="Person"]
+margin_left = 891.291
+margin_top = 792.134
+margin_right = 966.291
+margin_bottom = 817.134
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.301961, 0.294118, 0.294118, 1 )
+text = "Story"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Storybox" parent="Person" instance=ExtResource( 5 )]
+visible = false
+margin_left = 925.36
+margin_top = 446.928
+margin_right = 1501.36
+margin_bottom = 670.928
+
+[node name="PewdsIcon" type="Sprite" parent="Person/Storybox"]
+position = Vector2( 478.102, 140.829 )
+scale = Vector2( 0.632914, 0.599181 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1411.32, 847.488 )
+scale = Vector2( 0.452501, 0.4625 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+[connection signal="body_exited" from="Person" to="Person" method="_on_Person_body_exited"]

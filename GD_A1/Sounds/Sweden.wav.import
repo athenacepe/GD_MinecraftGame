@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Sweden.wav-34b61736d05f49a7f8923343e4ee4763.sample"
+
+[deps]
+
+source_file="res://Sounds/Sweden.wav"
+dest_files=[ "res://.import/Sweden.wav-34b61736d05f49a7f8923343e4ee4763.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

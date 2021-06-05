@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Pictures/DirtBG.jpg" type="Texture" id=1]
+[ext_resource path="res://Fonts/MinecraftRegular-Bmg3.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/EndScript.gd" type="Script" id=3]
+[ext_resource path="res://Sounds/Mine All Day (Instrumental).wav" type="AudioStream" id=4]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 728, 455 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 22
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 2 )
+
+[node name="EndingScene" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Panel" type="Panel" parent="Node"]
+margin_top = -1.0
+margin_right = 1164.0
+margin_bottom = 640.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Node/Panel"]
+margin_left = 192.0
+margin_top = 100.0
+margin_right = 992.0
+margin_bottom = 229.0
+custom_fonts/font = SubResource( 2 )
+text = "
+
+Thanks for playing!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Node/Panel"]
+margin_left = 480.0
+margin_top = 321.0
+margin_right = 617.0
+margin_bottom = 344.0
+custom_fonts/font = SubResource( 3 )
+text = "Final Score: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Node"]
+margin_left = 480.0
+margin_top = 480.0
+margin_right = 696.0
+margin_bottom = 532.0
+custom_fonts/font = SubResource( 4 )
+text = "Back to Title Screen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Node"]
+stream = ExtResource( 4 )
+autoplay = true
+[connection signal="pressed" from="Node/Button" to="." method="_on_Button_pressed"]

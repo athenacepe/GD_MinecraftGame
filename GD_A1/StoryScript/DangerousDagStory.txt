@@ -1,0 +1,10 @@
+This is the story of Dag. 
+With the recent passing of your mother you remember all the good times you shared together.
+You are in search of the perfect pie that is as good as what your mom made.
+But your journey won't be easy.
+You will fight enemies along the way who will try to stop you.
+But, I'll tell you what you need to know. 
+Press the Left arrow key to move left
+Press the Right arrow key to move right
+Press the Up arrow key to jump
+Press the Tab key to shoot fireballs, this will help you defeat your enemies.

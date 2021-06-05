@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Pictures/PDP.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/ChatboxScript.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/SBScript.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/SkipBtnScript.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/PewdsScript.gd" type="Script" id=5]
+[ext_resource path="res://Fonts/MinecraftRegular-Bmg3.otf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 6 )
+
+[node name="Storybox" type="Panel"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_right = 544.0
+margin_bottom = 224.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+skip_to_scene = "res://World/World1.tscn"
+story_line_file = "res://StoryScript/DangerousDagStory.txt"
+
+[node name="Chatbox" type="Label" parent="."]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 384.0
+margin_bottom = 128.0
+custom_fonts/font = SubResource( 1 )
+autowrap = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkipStoryLines " type="Button" parent="."]
+margin_left = 64.0
+margin_top = 160.0
+margin_right = 192.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 2 )
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkipToScene" type="Button" parent="."]
+margin_left = 256.0
+margin_top = 160.0
+margin_right = 402.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 3 )
+text = "Skip to Scene"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pewds" type="Sprite" parent="."]
+position = Vector2( 480, 128 )
+scale = Vector2( 0.34, 0.34 )
+texture = ExtResource( 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_editor_description_": ""
+}
+[connection signal="pressed" from="SkipStoryLines " to="Chatbox" method="_on_SkipStoryLines__pressed"]
+[connection signal="pressed" from="SkipToScene" to="SkipToScene" method="_on_SkipBtn_pressed"]
+[connection signal="pressed" from="SkipToScene" to="Chatbox" method="_on_SkipBtn_pressed"]
